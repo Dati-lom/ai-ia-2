@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "question": "My child likes to draw pictures or doodles in her/his notes.",
+        "img": "",
+        "type": "Visual"
+    },
+    {
+        "id": 2,
+        "question": "My child remembers things better when she/he sees pictures or diagrams.",
+        "img": "../Static/img2.jfif",
+        "type": "Visual"
+    },
+    {
+        "id": 3,
+        "question": "It helps my child to picture something in her/his mind to remember it.",
+        "img": "/Static/img3",
+        "type": "Visual"
+    },
+    {
+        "id": 4,
+        "question": "My child remembers things better when she/he hears them spoken aloud.",
+        "img": "",
+        "type": "Auditory"
+    },
+    {
+        "id": 5,
+        "question": "My child finds it helpful to listen to explanations or stories.",
+        "img": "",
+        "type": "Auditory"
+    },
+    {
+        "id": 6,
+        "question": "My child pays more attention when a teacher talks rather than uses pictures.",
+        "img": "",
+        "type": "Auditory"
+    },
+    {
+        "id": 7,
+        "question": "My child finds it easiest to remember things when she/he writes them down.",
+        "img": "",
+        "type": "Verbal"
+    },
+    {
+        "id": 8,
+        "question": "My child prefers to read instructions or notes to help him/her learn.",
+        "img": "",
+        "type": "Verbal"
+    },
+    {
+        "id": 9,
+        "question": "My child likes making lists or taking notes to remember things.",
+        "img": "",
+        "type": "Verbal"
+    },
+    {
+        "id": 10,
+        "question": "My child understands better when she/he does hands-on activities.",
+        "img": "",
+        "type": "Kinesthetic"
+    },
+    {
+        "id": 11,
+        "question": "My child remembers things better when she/he can touch or move around.",
+        "img": "",
+        "type": "Kinesthetic"
+    },
+    {
+        "id": 12,
+        "question": "My child gets restless if she/he has to sit still for too long.",
+        "img": "",
+        "type": "Kinesthetic"
+    }
+]
