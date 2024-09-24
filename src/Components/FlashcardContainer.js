@@ -9,7 +9,7 @@ const FlashcardContainer = () => {
     const [selectedValues, setSelectedValues] = useState({});
     const [warning, setWarning] = useState(null);  // State to hold the warning message
     const [isSubmitted, setIsSubmitted] = useState(false); // State to track if the test has been submitted
-    const [emailSent, setEmailSent] = useState(false);
+    // const [emailSent, setEmailSent] = useState(false);
     const [scores, setScores] = useState({
         Visual: 0,
         Auditory: 0,
@@ -83,11 +83,11 @@ const FlashcardContainer = () => {
           }, 'Xkh4Njd3bXlpxURCE')
           .then(response => {
             console.log('Success:', response);
-            setEmailSent(true);
+            // setEmailSent(true);
           })
           .catch(error => {
             console.error('Error:', error);
-            setEmailSent(false);
+            // setEmailSent(false);
           });
     };
 
