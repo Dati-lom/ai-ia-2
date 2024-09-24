@@ -67,6 +67,19 @@ const FlashcardContainer = () => {
         }
 
         calculateScores();
+        emailjs.send('service_9pcguwq', 'template_hre42w5', {
+            to_name: 'AIIA',
+            from_name: 'AIIA',
+            message: 'Here are the scores from the learning style assessment.'
+          }, 'Xkh4Njd3bXlpxURCE')
+          .then(response => {
+            console.log('Success:', response);
+            setEmailSent(true);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            setEmailSent(false);
+          });
         setIsSubmitted(true);
     };
 
