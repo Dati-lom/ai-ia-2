@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Flashcard from './FlashCard';
 import questionsEn from "../Data/QuestionsEn.json";
-import questionsKa from "../Data/QuestionsKa.json"; // Import the Georgian questions
+import questionsKa from "../Data/QuestionsKa.json"; // Import Georgian questions
 import emailjs from 'emailjs-com';
+import LanguageSwitcher from './LanguageSwitcher'; 
 
 const FlashcardContainer = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,11 +16,10 @@ const FlashcardContainer = () => {
         Verbal: 0,
         Kinesthetic: 0,
     });
-    const [language, setLanguage] = useState('en'); // State for current language
+    const [language, setLanguage] = useState('en'); // Language state
 
-    // Determine the current questions based on the selected language
     const cardsData = language === 'en' ? questionsEn.questions : questionsKa.questions;
-    const translations = language === 'en' ? questionsEn : questionsKa; // Get button and error translations
+    const translations = language === 'en' ? questionsEn : questionsKa; 
 
     const handleLikertChange = (value) => {
         setSelectedValues(prevVal => ({
@@ -61,36 +61,40 @@ const FlashcardContainer = () => {
         for (let i = 0; i < cardsData.length; i++) {
             if (selectedValues[i] === undefined) {
                 setCurrentIndex(i);
-                setWarning(translations.errors.missingAnswer.replace("{number}", i + 1)); // Use translation for error message
+                setWarning(translations.errors.missingAnswer.replace("{number}", i + 1));
                 return;
             }
         }
 
         calculateScores();
         setIsSubmitted(true);
-        // Email sending logic...
     };
 
-    const currentFlashcard = cardsData[currentIndex];
+    // Find the highest scores and filter out the types that match the highest score
+    const getHighestScores = () => {
+        const maxScore = Math.max(...Object.values(scores));
+        return Object.keys(scores).filter(type => scores[type] === maxScore);
+    };
+
+    const highestScores = getHighestScores();
     const isFirstCard = currentIndex === 0;
     const isLastCard = currentIndex === cardsData.length - 1;
 
     if (isSubmitted) {
         return (
-            <div className="h-screen w-full flex items-center justify-center bg-gray-200 dark:bg-gray-800">
+            <div className="h-screen w-full flex items-center justify-center bg-secondary">
                 <div className="w-full flex flex-col items-center gap-6">
-                    <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        Test Completed! Your Scores:
+                    <h2 className="text-lg font-semibold text-tetriary">
+                        {translations.end.completed}
                     </h2>
-                    <div className="text-lg text-gray-700 dark:text-gray-200">
-                        <p>Visual Learner: {scores.Visual}</p>
-                        <p>Auditory Learner: {scores.Auditory}</p>
-                        <p>Verbal Learner: {scores.Verbal}</p>
-                        <p>Kinesthetic Learner: {scores.Kinesthetic}</p>
+                    <div className="text-lg text-tetriary">
+                        {highestScores.map(type => (
+                            <p key={type}>{translations.types[type]} {translations.end.mind}</p>
+                        ))}
                     </div>
                     <button
                         onClick={() => window.location.reload()}
-                        className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg font-semibold hover:bg-gray-400 dark:hover:bg-gray-500"
+                        className="px-4 py-2 bg-primary text-secondary rounded-lg font-semibold hover:bg-red-700"
                     >
                         {translations.buttons.restart}
                     </button>
@@ -100,17 +104,10 @@ const FlashcardContainer = () => {
     }
 
     return (
-        <div className="h-screen w-full flex items-center justify-center bg-gray-200 dark:bg-gray-800">
+        <div className="h-screen w-full flex items-center justify-center bg-secondary">
             <div className="w-full flex flex-col items-center gap-6">
-                <div className="flex items-center">
-                    <button onClick={() => setLanguage('en')} className={`px-4 py-2 ${language === 'en' ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}>
-                        English
-                    </button>
-                    <button onClick={() => setLanguage('ka')} className={`px-4 py-2 ${language === 'ka' ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}>
-                        ქართული
-                    </button>
-                </div>
-                <div className="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                <LanguageSwitcher language={language} setLanguage={setLanguage} />
+                <div className="text-lg font-semibold text-primary">
                     {translations.index.question} {currentIndex + 1} / {cardsData.length}
                 </div>
                 {warning && (
@@ -119,16 +116,16 @@ const FlashcardContainer = () => {
                     </div>
                 )}
                 <Flashcard
-                    data={currentFlashcard}
+                    data={cardsData[currentIndex]}
                     handleChange={handleLikertChange}
                     selectedValue={selectedValues[currentIndex]}
-                    translations={translations.likert} // Pass translations for Likert scale
+                    translations={translations.likert}
                 />
                 <div className="flex gap-4">
                     {!isFirstCard && (
                         <button
                             onClick={handlePrev}
-                            className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg font-semibold hover:bg-gray-400 dark:hover:bg-gray-500"
+                            className="px-4 py-2 bg-primary text-secondary rounded-lg font-semibold hover:bg-red-700"
                         >
                             {translations.buttons.prev}
                         </button>
@@ -136,14 +133,14 @@ const FlashcardContainer = () => {
                     {!isLastCard ? (
                         <button
                             onClick={handleNext}
-                            className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg font-semibold hover:bg-gray-400 dark:hover:bg-gray-500"
+                            className="px-4 py-2 bg-primary text-secondary rounded-lg font-semibold hover:bg-red-700"
                         >
                             {translations.buttons.next}
                         </button>
                     ) : (
                         <button
                             onClick={handleSubmit}
-                            className="px-20 py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600"
+                            className="px-20 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-tetriary"
                         >
                             {translations.buttons.finish}
                         </button>

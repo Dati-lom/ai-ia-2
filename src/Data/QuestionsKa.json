@@ -2,73 +2,73 @@
     {
         "id": 1,
         "question": "ჩემს შვილს უყვარს ფურცელზე ხატვა და ნაჯღაპნების გაკეთება",
-        "img": "",
+        "img": "https://i.postimg.cc/FRN6zY9R/27825cda-28a3-451e-b1cc-3518efa2aa58.jpg",
         "type": "Visual"
     },
     {
         "id": 2,
         "question": "ჩემს შვილს უკეთ ამახსოვრდება როცა ხედავს სურათებს ან დიაგრამებს",
-        "img": "",
+        "img": "https://i.postimg.cc/8kyYkkxp/abe22689-3df0-44d2-9586-e27bac761bed.jpg",
         "type": "Visual"
     },
     {
         "id": 3,
         "question": "ჩემს შვილს გონებაში წარმოდგენა ეხმარება რომ დაიმახსოვროს",
-        "img": "",
+        "img": "https://i.postimg.cc/4NSjP41L/871f879d-b998-4193-97bb-fd4d5f47fdce.jpg",
         "type": "Visual"
     },
     {
         "id": 4,
         "question": "ჩემს შვილს უკეთ ამახსოვრდება როდესაც უსმენს ხმამაღლა",
-        "img": "",
+        "img": "https://i.postimg.cc/HLGRGSRb/ed699041-dc5a-4a58-9225-afe5b0b817ee.jpg",
         "type": "Auditory"
     },
     {
         "id": 5,
         "question": "ჩემს შვილს ეხმარება ისტორიების ახსნისთვის მოსმენა",
-        "img": "",
+        "img": "https://i.postimg.cc/13V2jxC9/79f41f5a-02d6-49fc-ab51-1b86295035ba.jpg",
         "type": "Auditory"
     },
     {
         "id": 6,
         "question": "ჩემი შვილი მასწავლებელს ყურადღებას უფრო აქცევს ლაპარაკისას ვიდრე დახატვისას",
-        "img": "",
+        "img": "https://i.postimg.cc/wTvSDRDR/a1f18d7d-cdc2-476d-9829-5f9c547859c3.jpg",
         "type": "Auditory"
     },
     {
         "id": 7,
         "question": "ჩემს შვილს უფრო მარტივად ამახსოვრდება როდესაც რვეულში იწერს",
-        "img": "",
+        "img": "https://i.postimg.cc/9Mbn7cMB/4c953d46-55b4-43eb-bb57-718d1035718f.jpg",
         "type": "Verbal"
     },
     {
         "id": 8,
         "question": "ჩემს შვილს ურჩევნია ინსტრუქციები წაიკითხოს რომ ისწავლოს",
-        "img": "",
+        "img": "https://i.postimg.cc/5ytk5DQW/f45e7eac-6221-4983-8191-9b72fb99c51e.jpg",
         "type": "Verbal"
     },
     {
         "id": 9,
         "question": "ჩემს შვილს უყვარს სიის ან ჩანაწერების გაკეთება",
-        "img": "",
+        "img": "https://i.postimg.cc/HLGRGSRb/ed699041-dc5a-4a58-9225-afe5b0b817ee.jpg",
         "type": "Verbal"
     },
     {
         "id": 10,
         "question": "ჩემს შვილს უყვარს პრაქტიკული საქმიანობა (დავალებების გაკეთება)",
-        "img": "",
+        "img": "https://i.postimg.cc/nrVNRC55/561bb936-f51d-4fcb-b050-0920cbf565c8.jpg",
         "type": "Kinesthetic"
     },
     {
         "id": 11,
         "question": "ჩემი შვილი იმახსოვრებს უკეთესად როცა ეხება ან მოძრაობს",
-        "img": "",
+        "img": "https://i.postimg.cc/bYL7G9Sj/190a64c4-2844-4cc7-9a62-8d00467cd4eb.jpg",
         "type": "Kinesthetic"
     },
     {
         "id": 12,
         "question": "ჩემი შვილი ხდება მოუსვენარი, როდესაც უწევს უძრავად ყოფნა",
-        "img": "",
+        "img": "https://i.postimg.cc/L5ywrmFs/5cfdd7ae-d7b7-4e07-a13a-4172bc597d36.jpg",
         "type": "Kinesthetic"
     }
 ],
@@ -76,7 +76,7 @@
         "next": "შემდეგი",
         "prev": "წინა",
         "finish": "დასრულება",
-        "restart": "პატივცემულობა"
+        "restart": "ხელახლა ცდა"
     },
     "errors": {
         "missingAnswer": "თქვენ გამოგრჩათ კითხვა {number}. გთხოვთ უპასუხოთ მას."
@@ -90,6 +90,16 @@
     },
     "index":{
         "question":"შეკითხვა"
+    },   
+    "types":{
+        "Visual": "ვიზუალური",
+        "Auditory": "აუდიტორული",
+        "Verbal":"ვერბალური",
+        "Kinesthetic":"კინესთეტიკური"
+    },
+    "end":{
+        "completed":"ტესტი დასრულებულია! შენ გაქვს",
+        "mind": "გონება"
     }
 }
 

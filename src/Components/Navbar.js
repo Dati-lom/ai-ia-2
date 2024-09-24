@@ -3,7 +3,7 @@ import logo from '../Static/logo.png';
 
 const Navbar = () => {
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 fixed w-full z-10">
+    <nav className="bg-white border-gray-200 dark:bg-primary fixed w-full z-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <div className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
