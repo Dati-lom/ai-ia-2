@@ -6,10 +6,11 @@ const Flashcard = ({ data, handleChange, selectedValue, translations }) => {
         <article className="w-3/4 rounded-lg shadow-2xl overflow-hidden bg-secondary p-4">
             <div>
             <img
-                    className="object-contain h-64 w-full"
-                    src={data.img}
-                    alt={data.question}
-                />
+                className="object-contain h-32 w-full sm:h-48 md:h-64 lg:h-80 xl:h-96"
+                src={data.img}
+                alt={data.question}
+            />
+
             </div>
 
             <div className="flex flex-col gap-1 mb-10 mt-10 px-4 bg-clip-padding">
