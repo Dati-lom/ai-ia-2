@@ -1,4 +1,4 @@
-[
+{"questions":[
     {
         "id": 1,
         "question": "My child likes to draw pictures or doodles in her/his notes.",
@@ -71,4 +71,25 @@
         "img": "",
         "type": "Kinesthetic"
     }
-]
+],
+"buttons": {
+    "next": "Next",
+    "prev": "Prev",
+    "finish": "Finish",
+    "restart": "Restart"
+},
+"errors": {
+    "missingAnswer": "You missed question {number}. Please answer it before submitting."
+},
+"likert": {
+    "stronglyDisagree": "Strongly Disagree",
+    "disagree": "Disagree",
+    "neutral": "Neither Agree nor Disagree",
+    "agree": "Agree",
+    "stronglyAgree": "Strongly Agree"
+},
+"index":{
+    "question":"Question"
+}
+}
+

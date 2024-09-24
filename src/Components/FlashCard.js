@@ -1,7 +1,7 @@
 import React from 'react';
 import "../Tailwind.css";
 
-const Flashcard = ({ data, handleChange, selectedValue }) => {
+const Flashcard = ({ data, handleChange, selectedValue, translations  }) => {
     return (
         <article className="w-3/4 rounded-lg shadow-lg overflow-hidden dark:bg-gray-700 p-4">
             <div>
@@ -33,7 +33,7 @@ const Flashcard = ({ data, handleChange, selectedValue }) => {
                                 />
                                 <span className="absolute bg-red-600 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
                             </label>
-                            <span className="ml-2">Strongly Disagree</span>
+                            <span className="ml-2">{translations.stronglyDisagree}</span>
                         </div>
                     </li>
 
@@ -51,7 +51,7 @@ const Flashcard = ({ data, handleChange, selectedValue }) => {
                                 />
                                 <span className="absolute bg-blue-600 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
                             </label>
-                            <span className="ml-2">Disagree</span>
+                            <span className="ml-2">{translations.disagree}</span>
                         </div>
                     </li>
 
@@ -69,7 +69,7 @@ const Flashcard = ({ data, handleChange, selectedValue }) => {
                                 />
                                 <span className="absolute bg-amber-600 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
                             </label>
-                            <span className="ml-2">Neither Agree nor Disagree</span>
+                            <span className="ml-2">{translations.neutral}</span>
                         </div>
                     </li>
 
@@ -87,7 +87,7 @@ const Flashcard = ({ data, handleChange, selectedValue }) => {
                                 />
                                 <span className="absolute bg-purple-600 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
                             </label>
-                            <span className="ml-2">Agree</span>
+                            <span className="ml-2">{translations.agree}</span>
                         </div>
                     </li>
 
@@ -105,7 +105,7 @@ const Flashcard = ({ data, handleChange, selectedValue }) => {
                                 />
                                 <span className="absolute bg-green-600 w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
                             </label>
-                            <span className="ml-2">Strongly Agree</span>
+                            <span className="ml-2">{translations.stronglyAgree}</span>
                         </div>
                     </li>
                 </ul>

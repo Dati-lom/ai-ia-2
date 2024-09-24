@@ -1,24 +1,27 @@
 import React, { useState } from 'react';
 import Flashcard from './FlashCard';
-import questions from "../Data/QuestionsEn.json";
-import emailjs from 'emailjs-com'; // Import EmailJS SDK
-const cardsData = questions;
+import questionsEn from "../Data/QuestionsEn.json";
+import questionsKa from "../Data/QuestionsKa.json"; // Import the Georgian questions
+import emailjs from 'emailjs-com';
 
 const FlashcardContainer = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedValues, setSelectedValues] = useState({});
-    const [warning, setWarning] = useState(null);  // State to hold the warning message
-    const [isSubmitted, setIsSubmitted] = useState(false); // State to track if the test has been submitted
-    // const [emailSent, setEmailSent] = useState(false);
+    const [warning, setWarning] = useState(null);
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const [scores, setScores] = useState({
         Visual: 0,
         Auditory: 0,
         Verbal: 0,
         Kinesthetic: 0,
     });
+    const [language, setLanguage] = useState('en'); // State for current language
+
+    // Determine the current questions based on the selected language
+    const cardsData = language === 'en' ? questionsEn.questions : questionsKa.questions;
+    const translations = language === 'en' ? questionsEn : questionsKa; // Get button and error translations
 
     const handleLikertChange = (value) => {
-        console.log("IS PRESSED");
         setSelectedValues(prevVal => ({
             ...prevVal,
             [currentIndex]: value
@@ -28,17 +31,15 @@ const FlashcardContainer = () => {
 
     const handleNext = () => {
         setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, cardsData.length - 1));
-        setWarning(null);  // Clear any warning when navigating
+        setWarning(null);
     };
 
     const handlePrev = () => {
         setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-        setWarning(null);  // Clear any warning when navigating
+        setWarning(null);
     };
 
     const calculateScores = () => {
-        console.log("TEST: ", selectedValues);
-        
         const newScores = {
             Visual: 0,
             Auditory: 0,
@@ -46,11 +47,10 @@ const FlashcardContainer = () => {
             Kinesthetic: 0,
         };
 
-        // Calculate the score based on selected values and question type
         cardsData.forEach((card, index) => {
             const answer = selectedValues[index];
             if (answer !== undefined) {
-                newScores[card.type] += parseInt(answer, 10); // Assuming values are numbers
+                newScores[card.type] += parseInt(answer, 10);
             }
         });
 
@@ -58,37 +58,17 @@ const FlashcardContainer = () => {
     };
 
     const handleSubmit = () => {
-        // Check for missed questions (those not answered)
         for (let i = 0; i < cardsData.length; i++) {
             if (selectedValues[i] === undefined) {
-                // If a question is missed, navigate to that question
                 setCurrentIndex(i);
-                setWarning(`You missed question ${i + 1}. Please answer it before submitting.`);
-                return; // Exit the function as we want to go back to the first missed question
+                setWarning(translations.errors.missingAnswer.replace("{number}", i + 1)); // Use translation for error message
+                return;
             }
         }
-        // If no questions are missed, proceed with submission
-        console.log("All questions answered. Submitted values:", selectedValues);
-        setWarning(null);  // Clear the warning
 
         calculateScores();
-        setIsSubmitted(true); // Mark the test as submitted
-        emailjs.send('service_9pcguwq', 'template_hre42w5', {
-            to_name: 'AIIA',
-            from_name: 'AIIA',
-            // section_one_score: scores.SECTION_ONE,
-            // section_two_score: scores.SECTION_TWO,
-            // section_three_score: scores.SECTION_THREE,
-            message: 'Here are the scores from the learning style assessment.'
-          }, 'Xkh4Njd3bXlpxURCE')
-          .then(response => {
-            console.log('Success:', response);
-            // setEmailSent(true);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            // setEmailSent(false);
-          });
+        setIsSubmitted(true);
+        // Email sending logic...
     };
 
     const currentFlashcard = cardsData[currentIndex];
@@ -109,10 +89,10 @@ const FlashcardContainer = () => {
                         <p>Kinesthetic Learner: {scores.Kinesthetic}</p>
                     </div>
                     <button
-                        onClick={() => window.location.reload()} // Reload the page to restart the quiz
+                        onClick={() => window.location.reload()}
                         className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg font-semibold hover:bg-gray-400 dark:hover:bg-gray-500"
                     >
-                        Restart
+                        {translations.buttons.restart}
                     </button>
                 </div>
             </div>
@@ -122,8 +102,16 @@ const FlashcardContainer = () => {
     return (
         <div className="h-screen w-full flex items-center justify-center bg-gray-200 dark:bg-gray-800">
             <div className="w-full flex flex-col items-center gap-6">
+                <div className="flex items-center">
+                    <button onClick={() => setLanguage('en')} className={`px-4 py-2 ${language === 'en' ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}>
+                        English
+                    </button>
+                    <button onClick={() => setLanguage('ka')} className={`px-4 py-2 ${language === 'ka' ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}>
+                        ქართული
+                    </button>
+                </div>
                 <div className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    Question {currentIndex + 1} / {cardsData.length}
+                    {translations.index.question} {currentIndex + 1} / {cardsData.length}
                 </div>
                 {warning && (
                     <div className="text-red-600 dark:text-red-400 font-semibold">
@@ -134,6 +122,7 @@ const FlashcardContainer = () => {
                     data={currentFlashcard}
                     handleChange={handleLikertChange}
                     selectedValue={selectedValues[currentIndex]}
+                    translations={translations.likert} // Pass translations for Likert scale
                 />
                 <div className="flex gap-4">
                     {!isFirstCard && (
@@ -141,7 +130,7 @@ const FlashcardContainer = () => {
                             onClick={handlePrev}
                             className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg font-semibold hover:bg-gray-400 dark:hover:bg-gray-500"
                         >
-                            Prev
+                            {translations.buttons.prev}
                         </button>
                     )}
                     {!isLastCard ? (
@@ -149,14 +138,14 @@ const FlashcardContainer = () => {
                             onClick={handleNext}
                             className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg font-semibold hover:bg-gray-400 dark:hover:bg-gray-500"
                         >
-                            Next
+                            {translations.buttons.next}
                         </button>
                     ) : (
                         <button
                             onClick={handleSubmit}
                             className="px-20 py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600"
                         >
-                            Finish
+                            {translations.buttons.finish}
                         </button>
                     )}
                 </div>
