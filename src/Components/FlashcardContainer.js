@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Flashcard from './FlashCard';
 import questionsEn from "../Data/QuestionsEn.json";
 import questionsKa from "../Data/QuestionsKa.json"; // Import Georgian questions
 import emailjs from 'emailjs-com';
-import LanguageSwitcher from './LanguageSwitcher'; 
 
-const FlashcardContainer = () => {
+const FlashcardContainer = ({language,setLanguage}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedValues, setSelectedValues] = useState({});
     const [warning, setWarning] = useState(null);
@@ -16,10 +15,16 @@ const FlashcardContainer = () => {
         Verbal: 0,
         Kinesthetic: 0,
     });
-    const [language, setLanguage] = useState('en'); // Language state
+    const [cardsData, setCardsData] = useState(questionsEn.questions)
+    const [translations, setTranslations] = useState(questionsEn)
+    useEffect(()=>{
+        console.log("ETETSSDS");
+        
+        setCardsData( language === 'en' ? questionsEn.questions : questionsKa.questions)
+        setTranslations(language === 'en' ? questionsEn : questionsKa)
+    },[language])
 
-    const cardsData = language === 'en' ? questionsEn.questions : questionsKa.questions;
-    const translations = language === 'en' ? questionsEn : questionsKa; 
+
 
     const handleLikertChange = (value) => {
         setSelectedValues(prevVal => ({
@@ -117,8 +122,8 @@ const FlashcardContainer = () => {
     return (
         <div className="h-screen w-full flex items-center justify-center bg-secondary">
             <div className="w-full flex flex-col items-center gap-6">
-                <LanguageSwitcher language={language} setLanguage={setLanguage} />
-                <div className="text-lg font-semibold text-primary">
+                {/* <LanguageSwitcher language={language} setLanguage={setLanguage} /> */}
+                <div className="text-lg font-semibold text-primary mt-8">
                     {translations.index.question} {currentIndex + 1} / {cardsData.length}
                 </div>
                 {warning && (
