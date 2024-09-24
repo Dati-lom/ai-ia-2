@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-scroll';
 import logo from '../Static/logo.png';
 
 const Navbar = () => {
