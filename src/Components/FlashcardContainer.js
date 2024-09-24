@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Flashcard from './FlashCard';
 import questions from "../Data/QuestionsEn.json";
-
+import emailjs from 'emailjs-com'; // Import EmailJS SDK
 const cardsData = questions;
 
 const FlashcardContainer = () => {
@@ -9,6 +9,7 @@ const FlashcardContainer = () => {
     const [selectedValues, setSelectedValues] = useState({});
     const [warning, setWarning] = useState(null);  // State to hold the warning message
     const [isSubmitted, setIsSubmitted] = useState(false); // State to track if the test has been submitted
+    const [emailSent, setEmailSent] = useState(false);
     const [scores, setScores] = useState({
         Visual: 0,
         Auditory: 0,
@@ -17,11 +18,11 @@ const FlashcardContainer = () => {
     });
 
     const handleLikertChange = (value) => {
+        console.log("IS PRESSED");
         setSelectedValues(prevVal => ({
             ...prevVal,
             [currentIndex]: value
         }));
-        // Clear any warning if the user selects a value
         setWarning(null);
     };
 
@@ -36,6 +37,8 @@ const FlashcardContainer = () => {
     };
 
     const calculateScores = () => {
+        console.log("TEST: ", selectedValues);
+        
         const newScores = {
             Visual: 0,
             Auditory: 0,
@@ -70,6 +73,22 @@ const FlashcardContainer = () => {
 
         calculateScores();
         setIsSubmitted(true); // Mark the test as submitted
+        emailjs.send('service_9pcguwq', 'template_hre42w5', {
+            to_name: 'AIIA',
+            from_name: 'AIIA',
+            // section_one_score: scores.SECTION_ONE,
+            // section_two_score: scores.SECTION_TWO,
+            // section_three_score: scores.SECTION_THREE,
+            message: 'Here are the scores from the learning style assessment.'
+          }, 'Xkh4Njd3bXlpxURCE')
+          .then(response => {
+            console.log('Success:', response);
+            setEmailSent(true);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            setEmailSent(false);
+          });
     };
 
     const currentFlashcard = cardsData[currentIndex];
