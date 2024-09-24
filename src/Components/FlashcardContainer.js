@@ -74,11 +74,9 @@ const FlashcardContainer = () => {
           }, 'Xkh4Njd3bXlpxURCE')
           .then(response => {
             console.log('Success:', response);
-            setEmailSent(true);
           })
           .catch(error => {
             console.error('Error:', error);
-            setEmailSent(false);
           });
         setIsSubmitted(true);
     };
