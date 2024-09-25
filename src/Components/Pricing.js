@@ -13,7 +13,7 @@ export default function Pricing({translations}) {
       ],
     },
     {
-      name: translations.homescreen.free,
+      name: translations.homescreen.premium,
       price: "$48",
       iconComponent: <Mage />,
       benefits: [
@@ -33,7 +33,7 @@ export default function Pricing({translations}) {
         /> */}
         <section className="bg-secondary font-sans lg:bg-transparent flex flex-col lg:flex-row justify-center xl:px-0 py-8 lg:py-0 w-full gap-6 items-center lg:items-stretch">
           {PRICING_DATA.map((data, index) => (
-            <div key={index} className="relative m-10">
+            <div key={index} className="relative w-full max-w-sm m-4 lg:m-10">
               <div className="max-w-sm xl:w-[384px] shadow-2xl p-6 bg-secondary group h-full rounded-2xl lg:hover:-translate-y-6 ease-in duration-300 hover:bg-primary hover:text-white border xl:border-none border-[#0B0641]">
                 <div className="flex flex-row gap-5 items-center">
                   <div>{data.iconComponent}</div>
