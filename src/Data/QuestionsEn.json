@@ -97,6 +97,13 @@
     "Verbal":"Verbal",
     "Kinesthetic":"Kinesthetic"
 },
+"definitions":{
+    "Visual":" You understand and retain information best when it's presented through images, diagrams, charts, or visual aids. Seeing concepts laid out visually helps you grasp and remember them more easily.",
+    "Auditory":"You learn best by listening. Hearing information, whether through lectures, discussions, or audio recordings, helps you absorb and process knowledge effectively.",
+    "Verbal":" You excel in learning through words. Reading, writing, and engaging in conversations help you understand and remember information more effectively.",
+    "Kinesthetic":"You understand and retain information through hands-on activities and movement. You prefer learning by doing, engaging with physical tasks or experiences to solidify your understanding."
+
+},
 "end":{
     "completed":"Test Completed!:",
     "mind": "Learner"

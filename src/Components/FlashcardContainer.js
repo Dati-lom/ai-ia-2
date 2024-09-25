@@ -110,12 +110,14 @@ const FlashcardContainer = ({ language, setLanguage }) => {
                         {highestScores.map(type => (
                             <div key={type} className="flex flex-col items-center">
                                 <p>{translations.types[type]} {translations.end.mind}</p>
-                                {/* Display the corresponding image */}
                                 <img
                                     src={imgSource[type]}
                                     alt={`${type} learner`}
                                     className="w-40 h-40 mt-4"
                                 />
+                                <p className="mt-4 text-center px-4">
+                                    {translations.definitions[type]}
+                                </p>
                             </div>
                         ))}
                     </div>
@@ -128,6 +130,7 @@ const FlashcardContainer = ({ language, setLanguage }) => {
                 </div>
             </div>
         );
+        
     }
 
     return (
