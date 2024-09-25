@@ -4,7 +4,7 @@ import "../Tailwind.css"
 const items = [
   { id: 1, img: 'https://i.postimg.cc/WpxbWXym/Game-day-cuate.png' },
   { id: 2, img: 'https://i.postimg.cc/j5kBj3fM/Audiobook-amico.png' },
-  { id: 3, img: 'https://i.postimg.cc/sg4j2ygK/Listening-happy-music-bro.png' },
+  { id: 3, img: 'https://i.postimg.cc/VvxTqSDM/Exams-bro.png' },
   { id: 4, img: 'https://i.postimg.cc/sg4j2ygK/Listening-happy-music-bro.png' },
   { id: 5, img: 'https://i.postimg.cc/8CN2X6Dm/Audiobook-rafiki.png' },
 ];
