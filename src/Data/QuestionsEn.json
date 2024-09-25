@@ -2,73 +2,73 @@
     {
         "id": 1,
         "question": "My child likes to draw pictures or doodles in her/his notes.",
-        "img": "https://i.postimg.cc/FRN6zY9R/27825cda-28a3-451e-b1cc-3518efa2aa58.jpg",
+        "img": "https://i.postimg.cc/KYcZkVKb/Visual-data-pana.png",
         "type": "Visual"
     },
     {
         "id": 2,
         "question": "My child remembers things better when she/he sees pictures or diagrams.",
-        "img": "https://i.postimg.cc/8kyYkkxp/abe22689-3df0-44d2-9586-e27bac761bed.jpg",
+        "img": "https://i.postimg.cc/Wz0Rf6DS/Create-amico.png",
         "type": "Visual"
     },
     {
         "id": 3,
         "question": "It helps my child to picture something in her/his mind to remember it.",
-        "img": "https://i.postimg.cc/4NSjP41L/871f879d-b998-4193-97bb-fd4d5f47fdce.jpg",
+        "img": "https://i.postimg.cc/VvxTqSDM/Exams-bro.png",
         "type": "Visual"
     },
     {
         "id": 4,
         "question": "My child remembers things better when she/he hears them spoken aloud.",
-        "img": "https://i.postimg.cc/HLGRGSRb/ed699041-dc5a-4a58-9225-afe5b0b817ee.jpg",
+        "img": "https://i.postimg.cc/j5kBj3fM/Audiobook-amico.png",
         "type": "Auditory"
     },
     {
         "id": 5,
         "question": "My child finds it helpful to listen to explanations or stories.",
-        "img": "https://i.postimg.cc/13V2jxC9/79f41f5a-02d6-49fc-ab51-1b86295035ba.jpg",
+        "img": "https://i.postimg.cc/sg4j2ygK/Listening-happy-music-bro.png",
         "type": "Auditory"
     },
     {
         "id": 6,
         "question": "My child pays more attention when a teacher talks rather than uses pictures.",
-        "img": "https://i.postimg.cc/wTvSDRDR/a1f18d7d-cdc2-476d-9829-5f9c547859c3.jpg",
+        "img": "https://i.postimg.cc/v84Ztp0H/Book-lover-bro.png",
         "type": "Auditory"
     },
     {
         "id": 7,
         "question": "My child finds it easiest to remember things when she/he writes them down.",
-        "img": "https://i.postimg.cc/9Mbn7cMB/4c953d46-55b4-43eb-bb57-718d1035718f.jpg",
+        "img": "https://i.postimg.cc/8CN2X6Dm/Audiobook-rafiki.png",
         "type": "Verbal"
     },
     {
         "id": 8,
         "question": "My child prefers to read instructions or notes to help him/her learn.",
-        "img": "https://i.postimg.cc/5ytk5DQW/f45e7eac-6221-4983-8191-9b72fb99c51e.jpg",
+        "img": "https://i.postimg.cc/nzL6pfXs/Bibliophile-amico.png",
         "type": "Verbal"
     },
     {
         "id": 9,
         "question": "My child likes making lists or taking notes to remember things.",
-        "img": "https://i.postimg.cc/HLGRGSRb/ed699041-dc5a-4a58-9225-afe5b0b817ee.jpg",
+        "img": "https://i.postimg.cc/HncR804d/Bibliophile-rafiki.png",
         "type": "Verbal"
     },
     {
         "id": 10,
         "question": "My child understands better when she/he does hands-on activities.",
-        "img": "https://i.postimg.cc/nrVNRC55/561bb936-f51d-4fcb-b050-0920cbf565c8.jpg",
+        "img": "https://i.postimg.cc/vH98p5RJ/Kids-playing-with-car-toys-bro.png",
         "type": "Kinesthetic"
     },
     {
         "id": 11,
         "question": "My child remembers things better when she/he can touch or move around.",
-        "img": "https://i.postimg.cc/bYL7G9Sj/190a64c4-2844-4cc7-9a62-8d00467cd4eb.jpg",
+        "img": "https://i.postimg.cc/sgrfy1sv/Launching-amico.png",
         "type": "Kinesthetic"
     },
     {
         "id": 12,
         "question": "My child gets restless if she/he has to sit still for too long.",
-        "img": "https://i.postimg.cc/L5ywrmFs/5cfdd7ae-d7b7-4e07-a13a-4172bc597d36.jpg",
+        "img": "https://i.postimg.cc/9fxcGpT7/Walking-around-amico.png",
         "type": "Kinesthetic"
     }
 ],
@@ -100,7 +100,36 @@
 "end":{
     "completed":"Test Completed! Your Scores:",
     "mind": "Learner"
-
+},
+"homescreen" : {
+    "welcome": "Welcome to AI - IA",
+    "quote" : "Discover your Learning style!",
+    "test" : "Take a Test!",
+    "free":"Free",
+    "get": "What You'll Get",
+    "premium": "Premium",
+    "list_free":[
+        "Take a Learning test",
+        "Access to chat bot",
+        "Customer Support",
+        "Analitics"
+    ],
+    "list_premium":[
+        "Chat bot without constraints",
+        "12/7 Customer support",
+        "Advanced analytics"
+    ],
+    "choose":"Choose",
+    "team":"Meet Our Team",
+    "about":"About",
+    "blog":"Blog",
+    "t":"Team",
+    "contact":"Contact",
+    "terms":"Terms",
+    "anamaria":"Anamaria Tchumburidze",
+    "lika":"Lika Datunasvhili",
+    "dato": "Davit Lomauridze"
+    
 }
 }
 

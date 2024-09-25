@@ -4,7 +4,14 @@ import questionsEn from "../Data/QuestionsEn.json";
 import questionsKa from "../Data/QuestionsKa.json"; // Import Georgian questions
 import emailjs from 'emailjs-com';
 
-const FlashcardContainer = ({language,setLanguage}) => {
+const imgSource = {
+    Visual: "https://i.postimg.cc/KYcZkVKb/Visual-data-pana.png",
+    Auditory: "https://i.postimg.cc/d06zbVVP/Audiobook-bro.png",
+    Verbal: "https://i.postimg.cc/nzL6pfXs/Bibliophile-amico.png",
+    Kinesthetic: "https://i.postimg.cc/vH98p5RJ/Kids-playing-with-car-toys-bro.png"
+};
+
+const FlashcardContainer = ({ language, setLanguage }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedValues, setSelectedValues] = useState({});
     const [warning, setWarning] = useState(null);
@@ -15,16 +22,13 @@ const FlashcardContainer = ({language,setLanguage}) => {
         Verbal: 0,
         Kinesthetic: 0,
     });
-    const [cardsData, setCardsData] = useState(questionsEn.questions)
-    const [translations, setTranslations] = useState(questionsEn)
-    useEffect(()=>{
-        console.log("ETETSSDS");
-        
-        setCardsData( language === 'en' ? questionsEn.questions : questionsKa.questions)
-        setTranslations(language === 'en' ? questionsEn : questionsKa)
-    },[language])
+    const [cardsData, setCardsData] = useState(questionsEn.questions);
+    const [translations, setTranslations] = useState(questionsEn);
 
-
+    useEffect(() => {
+        setCardsData(language === 'en' ? questionsEn.questions : questionsKa.questions);
+        setTranslations(language === 'en' ? questionsEn : questionsKa);
+    }, [language]);
 
     const handleLikertChange = (value) => {
         setSelectedValues(prevVal => ({
@@ -76,17 +80,16 @@ const FlashcardContainer = ({language,setLanguage}) => {
             to_name: 'AIIA',
             from_name: 'AIIA',
             message: 'Here are the scores from the learning style assessment.'
-          }, 'Xkh4Njd3bXlpxURCE')
-          .then(response => {
-            console.log('Success:', response);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
+        }, 'Xkh4Njd3bXlpxURCE')
+            .then(response => {
+                console.log('Success:', response);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         setIsSubmitted(true);
     };
 
-    // Find the highest scores and filter out the types that match the highest score
     const getHighestScores = () => {
         const maxScore = Math.max(...Object.values(scores));
         return Object.keys(scores).filter(type => scores[type] === maxScore);
@@ -105,7 +108,15 @@ const FlashcardContainer = ({language,setLanguage}) => {
                     </h2>
                     <div className="text-lg text-tetriary">
                         {highestScores.map(type => (
-                            <p key={type}>{translations.types[type]} {translations.end.mind}</p>
+                            <div key={type} className="flex flex-col items-center">
+                                <p>{translations.types[type]} {translations.end.mind}</p>
+                                {/* Display the corresponding image */}
+                                <img
+                                    src={imgSource[type]}
+                                    alt={`${type} learner`}
+                                    className="w-40 h-40 mt-4"
+                                />
+                            </div>
                         ))}
                     </div>
                     <button
@@ -122,7 +133,6 @@ const FlashcardContainer = ({language,setLanguage}) => {
     return (
         <div className="h-screen w-full flex items-center justify-center bg-secondary">
             <div className="w-full flex flex-col items-center gap-6">
-                {/* <LanguageSwitcher language={language} setLanguage={setLanguage} /> */}
                 <div className="text-lg font-semibold text-primary mt-8">
                     {translations.index.question} {currentIndex + 1} / {cardsData.length}
                 </div>
