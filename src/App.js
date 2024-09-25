@@ -3,7 +3,7 @@ import FlashcardContainer from './Components/FlashcardContainer';
 import HomeScreen from './Components/HomePage';
 import Navbar from './Components/Navbar';
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Route, Routes } from 'react-router-dom';
 import questionsEn from "./Data/QuestionsEn.json";
 import questionsKa from "./Data/QuestionsKa.json"; 
 function App() {
